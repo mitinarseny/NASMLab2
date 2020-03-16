@@ -18,9 +18,9 @@ int32_t a(int16_t x, int8_t y, int8_t z) {
     "idiv ecx\n\t"               // EAX       <- (4 * z + y * (x - 3)) / (2 * y + 5)
     "add eax, 2\n\t"             // EAX       <- (4 * z + y * (x - 3)) / (2 * y + 5) + 2
     : [v] "=a"(v) // EAX -> v
-    : [x] "a"(x), // x -> AX
-    [y] "d"(y),   // y -> DL
-    [z] "c"(z)    // z -> CL
+    : [x] "a"((signed)x), // x -> AX
+    [y] "d"((signed)y),   // y -> DL
+    [z] "c"((signed)z)    // z -> CL
     );
     return v;
 }
